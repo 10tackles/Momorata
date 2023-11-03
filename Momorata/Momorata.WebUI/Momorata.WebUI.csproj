@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProductManager\Index.cshtml" />
+    <Content Include="Views\ProductManager\Create.cshtml" />
+    <Content Include="Views\ProductManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +255,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Momorata.Core\Momorata.Core.csproj">
+      <Project>{cdc5cb05-c268-47ae-ba72-682a08577e0f}</Project>
+      <Name>Momorata.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Momorata.DataAccess.InMemory\Momorata.DataAccess.InMemory.csproj">
+      <Project>{1eb7b3b1-88a8-4ef0-a486-255aa7a7e132}</Project>
+      <Name>Momorata.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Momorata.DataAccess.SQL\Momorata.DataAccess.SQL.csproj">
+      <Project>{c3ba0a90-997a-49df-bc2c-3d8d6dce233d}</Project>
+      <Name>Momorata.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Momorata.Services\Momorata.Services.csproj">
+      <Project>{cf6df938-c722-47b5-8147-4514efe79f18}</Project>
+      <Name>Momorata.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
