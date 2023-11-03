@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34114.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.Core", "Momorata.Core\Momorata.Core.csproj", "{CDC5CB05-C268-47AE-BA72-682A08577E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.Services", "Momorata.Services\Momorata.Services.csproj", "{CF6DF938-C722-47B5-8147-4514EFE79F18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.DataAccess.SQL", "Momorata.DataAccess.SQL\Momorata.DataAccess.SQL.csproj", "{C3BA0A90-997A-49DF-BC2C-3D8D6DCE233D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.DataAccess.InMemory", "Momorata.DataAccess.InMemory\Momorata.DataAccess.InMemory.csproj", "{1EB7B3B1-88A8-4EF0-A486-255AA7A7E132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.WebUI", "Momorata.WebUI\Momorata.WebUI.csproj", "{9CC4CD00-F1C6-4472-9142-CC900AFB823C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Momorata.WebUI.Tests", "Momorata.WebUI.Tests\Momorata.WebUI.Tests.csproj", "{12D8DEB2-8B9C-4C26-99D7-D4D8CBFFB77E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDC5CB05-C268-47AE-BA72-682A08577E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDC5CB05-C268-47AE-BA72-682A08577E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDC5CB05-C268-47AE-BA72-682A08577E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDC5CB05-C268-47AE-BA72-682A08577E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6DF938-C722-47B5-8147-4514EFE79F18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6DF938-C722-47B5-8147-4514EFE79F18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6DF938-C722-47B5-8147-4514EFE79F18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6DF938-C722-47B5-8147-4514EFE79F18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3BA0A90-997A-49DF-BC2C-3D8D6DCE233D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3BA0A90-997A-49DF-BC2C-3D8D6DCE233D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3BA0A90-997A-49DF-BC2C-3D8D6DCE233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3BA0A90-997A-49DF-BC2C-3D8D6DCE233D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EB7B3B1-88A8-4EF0-A486-255AA7A7E132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EB7B3B1-88A8-4EF0-A486-255AA7A7E132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EB7B3B1-88A8-4EF0-A486-255AA7A7E132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EB7B3B1-88A8-4EF0-A486-255AA7A7E132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CC4CD00-F1C6-4472-9142-CC900AFB823C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC4CD00-F1C6-4472-9142-CC900AFB823C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC4CD00-F1C6-4472-9142-CC900AFB823C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC4CD00-F1C6-4472-9142-CC900AFB823C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12D8DEB2-8B9C-4C26-99D7-D4D8CBFFB77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D8DEB2-8B9C-4C26-99D7-D4D8CBFFB77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D8DEB2-8B9C-4C26-99D7-D4D8CBFFB77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D8DEB2-8B9C-4C26-99D7-D4D8CBFFB77E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7625017A-C4F3-4DE9-B382-67BFC00BF529}
+	EndGlobalSection
+EndGlobal
