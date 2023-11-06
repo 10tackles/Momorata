@@ -1,4 +1,5 @@
 ﻿using Momorata.Core.Models;
+using Momorata.Core.ViewModels;
 using Momorata.DataAccess.InMemory;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,12 @@ namespace Momorata.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductCategoryRepository productCategories;
 
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -23,8 +26,10 @@ namespace Momorata.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductManagerViewModel productManagerViewModel = new ProductManagerViewModel();
+            productManagerViewModel.Product = new Product();
+            productManagerViewModel.ProductCategories = productCategories.Collection();
+            return View(productManagerViewModel);
         }
 
         [HttpPost]
@@ -52,7 +57,10 @@ namespace Momorata.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                ProductManagerViewModel productManagerViewModel = new ProductManagerViewModel();
+                productManagerViewModel.Product = product;
+                productManagerViewModel.ProductCategories = productCategories.Collection();
+                return View(productManagerViewModel);
             }
         }
 
