@@ -1,6 +1,6 @@
-﻿using Momorata.Core.Models;
+﻿using Momorata.Core.Contracts;
+using Momorata.Core.Models;
 using Momorata.Core.ViewModels;
-using Momorata.DataAccess.InMemory;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,18 +9,18 @@ namespace Momorata.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryRepository<Product> context;
-        InMemoryRepository<ProductCategory> productCategories;
+        IRepository<Product> _context;
+        IRepository<ProductCategory> _productCategories;
 
-        public ProductManagerController()
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<Product>();
-            productCategories = new InMemoryRepository<ProductCategory>();
+            _context = productContext;
+            _productCategories = productCategoryContext;
         }
         // GET: ProductManager
         public ActionResult Index()
         {
-            List<Product> products = context.Collection().ToList();
+            List<Product> products = _context.Collection().ToList();
             return View(products);
         }
 
@@ -28,7 +28,7 @@ namespace Momorata.WebUI.Controllers
         {
             ProductManagerViewModel productManagerViewModel = new ProductManagerViewModel();
             productManagerViewModel.Product = new Product();
-            productManagerViewModel.ProductCategories = productCategories.Collection();
+            productManagerViewModel.ProductCategories = _productCategories.Collection();
             return View(productManagerViewModel);
         }
 
@@ -41,8 +41,8 @@ namespace Momorata.WebUI.Controllers
             }
             else
             {
-                context.Insert(product);
-                context.Commit();
+                _context.Insert(product);
+                _context.Commit();
 
                 return RedirectToAction("Index");
             }
@@ -50,7 +50,7 @@ namespace Momorata.WebUI.Controllers
 
         public ActionResult Edit(string Id)
         {
-            Product product = context.Find(Id);
+            Product product = _context.Find(Id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,7 @@ namespace Momorata.WebUI.Controllers
             {
                 ProductManagerViewModel productManagerViewModel = new ProductManagerViewModel();
                 productManagerViewModel.Product = product;
-                productManagerViewModel.ProductCategories = productCategories.Collection();
+                productManagerViewModel.ProductCategories = _productCategories.Collection();
                 return View(productManagerViewModel);
             }
         }
@@ -67,7 +67,7 @@ namespace Momorata.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(Product product, string Id)
         {
-            Product productToEdit = context.Find(Id);
+            Product productToEdit = _context.Find(Id);
 
             if (productToEdit == null)
             {
@@ -86,7 +86,7 @@ namespace Momorata.WebUI.Controllers
                 productToEdit.Name = product.Name;
                 productToEdit.Price = product.Price;
 
-                context.Commit();
+                _context.Commit();
 
                 return RedirectToAction("Index");
             }
@@ -94,7 +94,7 @@ namespace Momorata.WebUI.Controllers
 
         public ActionResult Delete(string Id)
         {
-            Product productToDelete = context.Find(Id);
+            Product productToDelete = _context.Find(Id);
 
             if (productToDelete == null)
             {
@@ -110,7 +110,7 @@ namespace Momorata.WebUI.Controllers
         [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {
-            Product productToDelete = context.Find(Id);
+            Product productToDelete = _context.Find(Id);
 
             if (productToDelete == null)
             {
@@ -118,8 +118,8 @@ namespace Momorata.WebUI.Controllers
             }
             else
             {
-                context.Delete(Id);
-                context.Commit();
+                _context.Delete(Id);
+                _context.Commit();
                 return RedirectToAction("Index");
             }
         }
