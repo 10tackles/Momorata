@@ -2,7 +2,9 @@
 using Momorata.Core.Models;
 using Momorata.Core.ViewModels;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Momorata.WebUI.Controllers
@@ -33,7 +35,7 @@ namespace Momorata.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
@@ -41,6 +43,11 @@ namespace Momorata.WebUI.Controllers
             }
             else
             {
+                if (file != null)
+                {
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
+                }
                 _context.Insert(product);
                 _context.Commit();
 
@@ -65,7 +72,7 @@ namespace Momorata.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Product product, string Id)
+        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
         {
             Product productToEdit = _context.Find(Id);
 
@@ -78,6 +85,12 @@ namespace Momorata.WebUI.Controllers
                 if (!ModelState.IsValid)
                 {
                     return View(product);
+                }
+
+                if (file != null)
+                {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
                 }
 
                 productToEdit.Category = product.Category;
