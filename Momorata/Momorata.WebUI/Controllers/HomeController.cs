@@ -1,5 +1,7 @@
 ﻿using Momorata.Core.Contracts;
 using Momorata.Core.Models;
+using Momorata.Core.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -17,10 +19,25 @@ namespace Momorata.WebUI.Controllers
             _productCategories = productCategories;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string Category = null)
         {
-            var productList = _context.Collection().ToList();
-            return View(productList);
+            List<Product> products;
+            List<ProductCategory> categories = _productCategories.Collection().ToList();
+
+            if (Category == null)
+            {
+                products = _context.Collection().ToList();
+            }
+            else
+            {
+                products = _context.Collection().Where(x => x.Category == Category).ToList();
+            }
+
+
+            ProductListViewModel model = new ProductListViewModel();
+            model.Products = products;
+            model.ProductCategories = categories;
+            return View(model);
         }
 
         public ActionResult Details(string Id)
