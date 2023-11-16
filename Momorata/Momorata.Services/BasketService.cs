@@ -98,7 +98,14 @@ namespace Momorata.Services
 
             if (item != null)
             {
-                basket.BasketItems.Remove(item);
+
+                item.Quantity = item.Quantity - 1;
+
+                if (item.Quantity == 0)
+                {
+                    basket.BasketItems.Remove(item);
+                }
+
                 _basketContext.Commit();
             }
         }
